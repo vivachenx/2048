@@ -116,7 +116,7 @@ var generateOneNumber = function() {
 }
 
 $(document).keydown(function(event){
-    //阻止默认效果
+    //阻止按键默认效果
     event.preventDefault()
     switch (event.keyCode) {
         case 37:
@@ -151,6 +151,7 @@ $(document).keydown(function(event){
 })
 
 document.addEventListener('touchstart', function(event){
+    // event.preventDefault()
     startX = event.touches[0].pageX
     startY = event.touches[0].pageY
     // console.log(startx);
