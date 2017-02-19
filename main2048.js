@@ -3,9 +3,25 @@ var hasConflicted = []
 var score = 0
 
 $(document).ready(function(){
-
+    prepareForMobile()
     newGame()
 })
+
+var prepareForMobile = function() {
+    if (documentWidth > 500) {
+        gridContainerWidth = 500
+        cellSideLength = 100
+        cellSpace = 20
+    }
+    $('#grid-container').css('width', gridContainerWidth - cellSpace * 2)
+    $('#grid-container').css('height', gridContainerWidth -  cellSpace * 2)
+    $('#grid-container').css('padding', cellSpace)
+    $('#grid-container').css('border-radius', gridContainerWidth * 0.02)
+
+    $('.grid-cell').css('width', cellSideLength)
+    $('.grid-cell').css('height', cellSideLength)
+    $('.grid-cell').css('border-radius', cellSideLength * 0.02)
+}
 
 var newGame = function() {
     //初始化棋盘
@@ -46,11 +62,11 @@ var updateBoardView = function() {
             if (board[i][j] === 0) {
                 theNemberCell.css('height', '0px')
                 theNemberCell.css('width', '0px')
-                theNemberCell.css('top', getPosTop(i, j) + 50)
-                theNemberCell.css('left', getPosLeft(i, j) + 50)
+                theNemberCell.css('top', getPosTop(i, j) + cellSideLength / 2)
+                theNemberCell.css('left', getPosLeft(i, j) + cellSideLength / 2)
             } else {
-                theNemberCell.css('height', '100px')
-                theNemberCell.css('width', '100px')
+                theNemberCell.css('height', cellSideLength)
+                theNemberCell.css('width', cellSideLength)
                 theNemberCell.css('top', getPosTop(i, j))
                 theNemberCell.css('left', getPosLeft(i, j))
                 theNemberCell.css('background-color', getNumberBackgroundColor(board[i][j]))
@@ -60,6 +76,9 @@ var updateBoardView = function() {
             hasConflicted[i][j] = false
         }
     }
+    $('.number-cell').css('line-height', cellSideLength + 'px')
+    $('.number-cell').css('font-size', cellSideLength * 0.6 + 'px')
+    $('.number-cell').css('border-radius', gridContainerWidth * 0.02)
 }
 
 var generateOneNumber = function() {
