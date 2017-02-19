@@ -2,6 +2,11 @@ var board = []
 var hasConflicted = []
 var score = 0
 
+var startx = 0
+var starty = 0
+var endx = 0
+var endy = 0
+
 $(document).ready(function(){
     prepareForMobile()
     newGame()
@@ -76,9 +81,11 @@ var updateBoardView = function() {
             hasConflicted[i][j] = false
         }
     }
+    // TODO: 字体大小
+    // TODO: 圆角
     $('.number-cell').css('line-height', cellSideLength + 'px')
     $('.number-cell').css('font-size', cellSideLength * 0.6 + 'px')
-    $('.number-cell').css('border-radius', gridContainerWidth * 0.02)
+    // $('.number-cell').css('border-radius', gridContainerWidth * 0.02)
 }
 
 var generateOneNumber = function() {
@@ -109,6 +116,8 @@ var generateOneNumber = function() {
 }
 
 $(document).keydown(function(event){
+    //阻止默认效果
+    event.preventDefault()
     switch (event.keyCode) {
         case 37:
             if (moveLeft()) {
@@ -139,6 +148,52 @@ $(document).keydown(function(event){
             // console.log('down');
             break;
     }
+})
+
+document.addEventListener('touchstart', function(event){
+    startX = event.touches[0].pageX
+    startY = event.touches[0].pageY
+    // console.log(startx);
+})
+
+document.addEventListener('touchend', function(event){
+    endX = event.changedTouches[0].pageX
+    endY = event.changedTouches[0].pageY
+    var deltaX = endX - startX
+    var deltaY = endY - startY
+    if (Math.abs(deltaX) < documentWidth * 0.1 && Math.abs(deltaY) < documentWidth * 0.1) {
+        return
+    }
+    if (Math.abs(deltaX) >= Math.abs(deltaY)) {
+        if (deltaX > 0) {
+            //right
+            if (moveRight()) {
+                setTimeout("generateOneNumber()", 210)
+                setTimeout("isGameOver()", 300)
+            }
+        } else {
+            //left
+            if (moveLeft()) {
+                setTimeout("generateOneNumber()", 210)
+                setTimeout("isGameOver()", 300)
+            }
+        }
+    } else {
+        if (deltaY > 0) {
+            //down
+            if (moveDown()) {
+                setTimeout("generateOneNumber()", 210)
+                setTimeout("isGameOver()", 300)
+            }
+        } else {
+            //up
+            if (moveUp()) {
+                setTimeout("generateOneNumber()", 210)
+                setTimeout("isGameOver()", 300)
+            }
+        }
+    }
+    // console.log(endx);
 })
 
 var isGameOver = function() {
