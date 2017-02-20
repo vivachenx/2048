@@ -151,13 +151,14 @@ $(document).keydown(function(event){
 })
 
 document.addEventListener('touchstart', function(event){
-    // event.preventDefault()
+    event.preventDefault()
     startX = event.touches[0].pageX
     startY = event.touches[0].pageY
     // console.log(startx);
 })
 
 document.addEventListener('touchend', function(event){
+    event.preventDefault()
     endX = event.changedTouches[0].pageX
     endY = event.changedTouches[0].pageY
     var deltaX = endX - startX
