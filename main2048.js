@@ -28,7 +28,7 @@ var prepareForMobile = function() {
 
     $('.grid-cell').css('width', cellSideLength)
     $('.grid-cell').css('height', cellSideLength)
-    $('.grid-cell').css('border-radius', cellSideLength * 0.02)
+    $('.grid-cell').css('border-radius', cellSideLength * 0.05)
 }
 
 var newGame = function() {
@@ -88,7 +88,7 @@ var updateBoardView = function() {
     // TODO: 圆角
     $('.number-cell').css('line-height', cellSideLength + 'px')
     $('.number-cell').css('font-size', cellSideLength * 0.6 + 'px')
-    // $('.number-cell').css('border-radius', gridContainerWidth * 0.02)
+    $('.number-cell').css('border-radius', cellSideLength * 0.05)
 }
 
 var generateOneNumber = function() {
