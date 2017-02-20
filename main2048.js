@@ -153,8 +153,14 @@ $(document).keydown(function(event){
     }
 })
 
+document.ontouchmove = function (event) {
+    if (!event.elementIsEnabled) {
+        event.preventDefault();
+    }
+}
+
 document.addEventListener('touchstart', function(event){
-    event.preventDefault()
+    // event.preventDefault()
     startX = event.touches[0].pageX
     startY = event.touches[0].pageY
     // console.log(startx);
