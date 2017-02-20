@@ -18,7 +18,9 @@ var prepareForMobile = function() {
         cellSideLength = 100
         cellSpace = 20
     }
-    // $('html').css('height', documentHeight * 0.7)
+    
+    $('header').css('height', documentHeight * 0.15)
+
     $('#grid-container').css('width', gridContainerWidth - cellSpace * 2)
     $('#grid-container').css('height', gridContainerWidth -  cellSpace * 2)
     $('#grid-container').css('padding', cellSpace)
