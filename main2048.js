@@ -18,7 +18,7 @@ var prepareForMobile = function() {
         cellSideLength = 100
         cellSpace = 20
     }
-    
+
     $('header').css('height', documentHeight * 0.15)
 
     $('#grid-container').css('width', gridContainerWidth - cellSpace * 2)
@@ -161,7 +161,7 @@ document.addEventListener('touchstart', function(event){
 })
 
 document.addEventListener('touchend', function(event){
-    event.preventDefault()
+    // event.preventDefault()
     endX = event.changedTouches[0].pageX
     endY = event.changedTouches[0].pageY
     var deltaX = endX - startX
