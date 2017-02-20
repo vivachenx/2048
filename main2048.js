@@ -159,18 +159,12 @@ document.ontouchmove = function(event) {
     }
 }
 
-document.touchstart = function(event) {
+document.addEventListener('touchstart', function(event){
+    // event.preventDefault()
     startX = event.touches[0].pageX
     startY = event.touches[0].pageY
     // console.log(startx);
-}
-
-// document.addEventListener('touchstart', function(event){
-//     // event.preventDefault()
-//     startX = event.touches[0].pageX
-//     startY = event.touches[0].pageY
-//     // console.log(startx);
-// })
+})
 
 document.addEventListener('touchend', function(event){
     // event.preventDefault()
