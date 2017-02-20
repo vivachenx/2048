@@ -22,6 +22,7 @@ var prepareForMobile = function() {
 
         return
     }
+    // TODO: 仅在操作页面阻止滑动
     //阻止页面滑动
     document.ontouchmove = function(event) {
         if (!event.elementIsEnabled) {
