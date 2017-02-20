@@ -1,8 +1,8 @@
 var showNumberWithAnimation = function(i, j, randNumber) {
     var numberCell = $(`#number-cell-${i}-${j}`)
-    // console.log('numberCell :', numberCell);
     numberCell.css('background-color', getNumberBackgroundColor(randNumber))
     numberCell.css('color', getNumberColor(randNumber))
+    numberCell.css('font-size', getNumberSize(board[i][j]))
     numberCell.text(randNumber)
 
     numberCell.animate({
@@ -23,5 +23,6 @@ var showMoveAnimation = function(fromx, fromy, tox, toy) {
 }
 
 var updateScore = function(score) {
+    // TODO: 添加分数动画
     $('#score').text(score)
 }

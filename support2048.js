@@ -19,6 +19,16 @@ var getNumberColor = function(number) {
     return 'white'
 }
 
+var getNumberSize = function(number) {
+    if (number > 512) {
+        return cellSideLength * 0.4 + 'px'
+    } else if (number === 512) {
+        return cellSideLength * 0.5 + 'px'
+    } else {
+        return cellSideLength * 0.6 + 'px'
+    }
+}
+
 var getNumberBackgroundColor = function(number) {
     var color = {
         2: '#eee4da',
