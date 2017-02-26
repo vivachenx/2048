@@ -14,6 +14,8 @@ $(document).ready(function(){
     newGame()
 })
 
+// TODO: 悔棋按钮, 本地储存
+
 var prepareForMobile = function() {
     if (documentWidth > 500) {
         gridContainerWidth = 500
@@ -137,6 +139,7 @@ var updateBoardView = function() {
                 theNemberCell.css('top', getPosTop(i, j) + cellSideLength / 2)
                 theNemberCell.css('left', getPosLeft(i, j) + cellSideLength / 2)
             } else {
+                theNemberCell.text(board[i][j])
                 theNemberCell.css('height', cellSideLength)
                 theNemberCell.css('width', cellSideLength)
                 theNemberCell.css('top', getPosTop(i, j))
@@ -144,7 +147,6 @@ var updateBoardView = function() {
                 theNemberCell.css('font-size', getNumberSize(board[i][j]))
                 theNemberCell.css('background-color', getNumberBackgroundColor(board[i][j]))
                 theNemberCell.css('color', getNumberColor(board[i][j]))
-                theNemberCell.text(board[i][j])
             }
             hasConflicted[i][j] = false
         }
